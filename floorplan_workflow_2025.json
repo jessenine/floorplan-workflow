@@ -1,6 +1,6 @@
 {
-  "last_node_id": 15,
-  "last_link_id": 15,
+  "last_node_id": 12,
+  "last_link_id": 14,
   "nodes": [
     {
       "id": 1,
@@ -28,7 +28,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "floorplan_sketch.jpg",
+        "image.jpg",
         "image"
       ]
     },
@@ -127,7 +127,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "2D floor plan, top-down view, architectural line drawing, clean white background, black lines, walls, rooms, doors, furniture layout, blueprint style, simple lines, no shading, minimal details, orthographic, plan view",
+        "2D floor plan, top-down view, architectural line drawing, clean white background, black lines, walls, rooms, doors, furniture layout, blueprint style, simple lines, no shading, minimal details, orthographic, plan view, high quality",
         ""
       ]
     },
@@ -166,7 +166,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "3D perspective, isometric, shaded, colored, textured, photorealistic, realistic, clutter, text, dimensions, people, furniture details, 3d view, depth, shadows, watercolor, painting",
+        "3D perspective, isometric, shaded, colored, textured, photorealistic, realistic, clutter, text, dimensions, people, furniture details, 3d view, depth, shadows, watercolor, painting, blurry",
         ""
       ]
     },
@@ -298,8 +298,8 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "/tower.local/share/Pidev_proj/image_output_hist",
-        "floorplan_caiping"
+        "",
+        "floorplan_"
       ]
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "id": 11,
-      "type": "ControlNetApply",
+      "type": "ControlNetApplyAdvanced",
       "pos": [800, 400],
       "size": [300, 150],
       "flags": {},
@@ -366,59 +366,18 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ControlNetApply"
+        "Node name for S&R": "ControlNetApplyAdvanced"
       },
       "widgets_values": [
         0.65,
         0.0,
-        1.0
-      ]
-    },
-    {
-      "id": 12,
-      "type": "ControlNetApply",
-      "pos": [800, 550],
-      "size": [300, 150],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "conditioning",
-          "type": "CONDITIONING",
-          "link": 10
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 16
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 1
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [13],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ControlNetApply"
-      },
-      "widgets_values": [
-        0.65,
-        0.0,
+        1.0,
         1.0
       ]
     }
   ],
   "links": [
-    [1, 1, 0, 10, 2, "IMAGE"],
+    [1, 1, 0, 11, 2, "IMAGE"],
     [2, 2, 0, 10, 1, "CONTROL_NET"],
     [3, 3, 0, 7, 0, "MODEL"],
     [4, 3, 1, 4, 1, "CLIP"],
@@ -430,11 +389,10 @@
     [10, 5, 0, 12, 0, "CONDITIONING"],
     [11, 6, 0, 7, 3, "LATENT"],
     [12, 11, 0, 7, 1, "CONDITIONING"],
-    [13, 12, 0, 7, 2, "CONDITIONING"],
+    [13, 5, 0, 7, 2, "CONDITIONING"],
     [14, 7, 0, 8, 0, "LATENT"],
     [15, 8, 0, 9, 0, "IMAGE"],
-    [16, 10, 0, 11, 1, "CONTROL_NET"],
-    [16, 10, 0, 12, 1, "CONTROL_NET"]
+    [16, 10, 0, 11, 1, "CONTROL_NET"]
   ],
   "groups": [],
   "config": {},
@@ -447,18 +405,7 @@
       }
     }
   },
-  "models": [
-    {
-      "name": "epicrealism_naturalSinRC1VAE.safetensors",
-      "type": "checkpoints",
-      "path": "checkpoints/epicrealism_naturalSinRC1VAE.safetensors"
-    },
-    {
-      "name": "controlnet_union_sdxl_promax.pth",
-      "type": "controlnet",
-      "path": "controlnet/controlnet_union_sdxl_promax.pth"
-    }
-  ],
+  "models": [],
   "network": {},
   "version": 0.4
 }
