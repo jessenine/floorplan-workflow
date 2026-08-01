@@ -1,0 +1,75 @@
+FLOOR PLAN LAYOUT
+=================
+
+FRONT ENTRANCE
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│  Front Porch/Entryway                                                               │
+│  ┌──────────────┐                                                                   │
+│  │  Doorway     │                                                                   │
+│  │  (Front)     │                                                                   │
+│  └──────┬───────┘                                                                   │
+│         │                                                                           │
+│         ▼                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │                        Hallway                                              │   │
+│  │  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐                      │   │
+│  │  │Living │  │Kitchen│  │Garage │  │Storage│  │Pool   │                      │   │
+│  │  │Room   │  │      │  │Work-  │  │Closet │  │Area   │                      │   │
+│  │  │(Left) │  │      │  │shop   │  │       │  │       │                      │   │
+│  │  └───────┘  └───────┘  └───────┘  └───────┘  └───────┘                      │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│         │                                                                           │
+│         ▼                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │                        Backyard Garden                                      │   │
+│  │  ┌──────────────────────────────────────────────────────────────────────┐   │   │
+│  │  │  Garden beds, Pathway, Seating Area                                  │   │   │
+│  │  └──────────────────────────────────────────────────────────────────────┘   │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+
+ROOM DETAILS
+============
+
+1. FRONT PORCH/ENTRYWAY
+   - Entry door from street
+   - Small entry mat area
+   - Coat closet nearby
+
+2. HALLWAY (Main Spine)
+   - Runs front to back
+   - Left branch: Living Room
+   - Right branch: Kitchen → Garage
+   - Center: Storage closet
+   - Rear: Backyard access
+
+3. LIVING ROOM (Left of hallway)
+   - Large window (front)
+   - Fireplace (left wall)
+   - Open to kitchen
+
+4. KITCHEN (Adjacent to living room)
+   - Wooden door to living room
+   - Window (back yard view)
+   - Peninsula island
+
+5. GARAGE/WORKSHOP (Right of hallway)
+   - Garage door (front)
+   - Workbench area
+   - Storage shelves
+
+6. BACKYARD GARDEN
+   - Covered patio area
+   - Garden beds
+   - Fenced perimeter
+
+7. POOL AREA (Rear right)
+   - In-ground pool
+   - Deck area
+   - Pool equipment closet
+
+WALLS: 20px thick, black lines
+DOORS: Gaps in walls (80-90px wide)
+WINDOWS: Dashed lines (120-150px wide)
+FLOOR: White background
+STYLE: Clean blueprint, top-down orthographic view

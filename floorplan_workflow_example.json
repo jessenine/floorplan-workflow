@@ -1,0 +1,326 @@
+{
+  "last_node_id": 15,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "PrimitiveStringMultiline",
+      "pos": [100, 100],
+      "size": [500, 500],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [1],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "FLOOR PLAN LAYOUT\n=================\n\nFRONT ENTRANCE\n┌─────────────────────────────────────────────────────────────────────────────────────┐\n│  Front Porch/Entryway                                                               │\n│  ┌──────────────┐                                                                   │\n│  │  Doorway     │                                                                   │\n│  │  (Front)     │                                                                   │\n│  └──────┬───────┘                                                                   │\n│         │                                                                           │\n│         ▼                                                                           │\n│  ┌─────────────────────────────────────────────────────────────────────────────┐   │\n│  │                        Hallway                                              │   │\n│  │  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐                      │   │\n│  │  │Living │  │Kitchen│  │Garage │  │Storage│  │Pool   │                      │   │\n│  │  │Room   │  │      │  │Work-  │  │Closet │  │Area   │                      │   │\n│  │  │(Left) │  │      │  │shop   │  │       │  │       │                      │   │\n│  │  └───────┘  └───────┘  └───────┘  └───────┘  └───────┘                      │   │\n│  └─────────────────────────────────────────────────────────────────────────────┘   │\n│         │                                                                           │\n│         ▼                                                                           │\n│  ┌─────────────────────────────────────────────────────────────────────────────┐   │\n│  │                        Backyard Garden                                      │   │\n│  │  ┌──────────────────────────────────────────────────────────────────────┐   │   │\n│  │  │  Garden beds, Pathway, Seating Area                                  │   │   │\n│  │  └──────────────────────────────────────────────────────────────────────┘   │   │\n│  └─────────────────────────────────────────────────────────────────────────────┘   │\n└─────────────────────────────────────────────────────────────────────────────────────┘\n\nROOM DETAILS\n============\n\n1. FRONT PORCH/ENTRYWAY\n   - Entry door from street\n   - Small entry mat area\n   - Coat closet nearby\n\n2. HALLWAY (Main Spine)\n   - Runs front to back\n   - Left branch: Living Room\n   - Right branch: Kitchen → Garage\n   - Center: Storage closet\n   - Rear: Backyard access\n\n3. LIVING ROOM (Left of hallway)\n   - Large window (front)\n   - Fireplace (left wall)\n   - Open to kitchen\n\n4. KITCHEN (Adjacent to living room)\n   - Wooden door to living room\n   - Window (back yard view)\n   - Peninsula island\n\n5. GARAGE/WORKSHOP (Right of hallway)\n   - Garage door (front)\n   - Workbench area\n   - Storage shelves\n\n6. BACKYARD GARDEN\n   - Covered patio area\n   - Garden beds\n   - Fenced perimeter\n\n7. POOL AREA (Rear right)\n   - In-ground pool\n   - Deck area\n   - Pool equipment closet\n\nWALLS: 20px thick, black lines\nDOORS: Gaps in walls (80-90px wide)\nWINDOWS: Dashed lines (120-150px wide)\nFLOOR: White background\nSTYLE: Clean blueprint, top-down orthographic view"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CheckpointLoaderSimple",
+      "pos": [100, 650],
+      "size": [300, 100],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [2],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [3, 4],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [5],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "epicrealism_naturalSinRC1VAE.safetensors"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [550, 100],
+      "size": [600, 300],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "slot_index": 0,
+          "link": 3
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "slot_index": 0,
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [6],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "2D floor plan, top-down orthographic view, architectural blueprint, clean white background, black lines for walls and doors, detailed layout: front porch, hallway, living room left, kitchen adjacent, garage/workshop right, backyard garden, fenced pool area, blueprint style, no shading, minimal details, clean lines"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [550, 450],
+      "size": [600, 200],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "slot_index": 0,
+          "link": 4
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "slot_index": 0,
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [8],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "3D perspective, isometric view, shaded, colored, textured, photorealistic, clutter, text labels, dimensions, people, furniture details, 3D model, depth, shadows, watercolor painting, sketch style"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [100, 800],
+      "size": [300, 100],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [9],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [550, 750],
+      "size": [300, 260],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "slot_index": 0,
+          "link": 2
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "link": 6
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "slot_index": 0,
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [10],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        12345,
+        "fixed",
+        30,
+        6.0,
+        "dpmpp_2m_sde_gpu",
+        "karras",
+        0.85
+      ]
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [900, 750],
+      "size": [200, 50],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "slot_index": 0,
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "slot_index": 0,
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [11],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [1200, 750],
+      "size": [300, 100],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "floorplan_example"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PrimitiveStringMultiline",
+      "pos": [550, 650],
+      "size": [600, 50],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [7],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "3D perspective, isometric view, shaded, colored, textured, photorealistic, clutter, text labels, dimensions, people, furniture details, 3D model, depth, shadows, watercolor painting, sketch style"
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 3, 1, "STRING"],
+    [2, 2, 0, 6, 0, "MODEL"],
+    [3, 2, 1, 3, 0, "CLIP"],
+    [4, 2, 1, 4, 0, "CLIP"],
+    [5, 2, 2, 7, 1, "VAE"],
+    [6, 3, 0, 6, 1, "CONDITIONING"],
+    [7, 9, 0, 4, 1, "STRING"],
+    [8, 4, 0, 6, 2, "CONDITIONING"],
+    [9, 5, 0, 6, 3, "LATENT"],
+    [10, 6, 0, 7, 0, "LATENT"],
+    [11, 7, 0, 8, 0, "IMAGE"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5,
+      "offset": [100, 100]
+    }
+  },
+  "version": 0.4
+}
