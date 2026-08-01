@@ -1,63 +1,57 @@
-# Floor Plan Workflow - Windows Setup Guide
+# Floor Plan Workflow
 
-## Files Available (in this folder)
+ComfyUI workflow for generating 2D floor plans using ControlNet Union Pro Max and MLSD preprocessor.
 
-| File | Purpose |
-|------|---------|
-| **floorplan_workflow_2025.json** | ComfyUI workflow to import |
-| **install_floorplan.bat** | Easy installer (double-click to run) |
-| **install_floorplan_workflow.ps1** | PowerShell installation script |
-| **SETUP_COMPLETE.txt** | Detailed installation instructions |
+## 📦 What's Included
 
-## Quick Start (Recommended)
+- **floorplan_workflow_2025.json** - Complete ComfyUI workflow ready to import
+- **Installation scripts** - Automated setup for Windows, Linux, and Mac
+- **Model download helpers** - Scripts to download ControlNet Union Pro Max
+- **Documentation** - Multiple guides for different installation methods
 
-### Option 1: Easy Install (Double-click)
-1. Double-click `install_floorplan.bat`
-2. Wait for installation to complete
-3. Restart ComfyUI
-4. Load `floorplan_workflow_2025.json`
+## 🚀 Quick Start
 
-### Option 2: Manual Install
-1. Open PowerShell as Administrator in `C:\Users\shade\Downloads\Data\Packages\ComfyUI`
-2. Run: `.\install_floorplan_workflow.ps1`
-3. Restart ComfyUI
-4. Load `floorplan_workflow_2025.json`
+1. Copy all files to your ComfyUI folder
+2. Run `install_floorplan_workflow.ps1` (Windows) or `./install_floorplan_workflow.sh` (Linux/Mac)
+3. Download ControlNet Union Pro Max (2.5 GB) using `download_model.ps1`
+4. Restart ComfyUI
+5. Load `floorplan_workflow_2025.json`
 
-## What Gets Installed
+## 📖 Documentation
 
-### Custom Nodes (~210 MB)
-1. **ComfyUI ControlNet Aux** - Provides MLSD, Lineart, Canny preprocessors
-2. **ComfyUI Manager** - Optional, makes node management easier
+- **QUICK_WINDOWS_INSTALL.txt** - 5-minute setup for Windows
+- **MANUAL_WINDOWS_INSTALL.txt** - Detailed installation guide
+- **download_model.ps1** - PowerShell script to download the model
+- **download_model.bat** - Batch file to download the model
 
-### Models (~2.5 GB)
-1. **ControlNet Union Pro Max** - All-in-one ControlNet model
+## 🔧 Requirements
 
-## Default Workflow Settings
+- ComfyUI installed and running
+- Git (for installation scripts)
+- ControlNet Union Pro Max model (~2.5 GB)
+- Python 3.8+ with PyTorch
+
+## 🎯 Workflow Settings
 
 - **Resolution**: 1024x1024
 - **Steps**: 30
+- **CFG Scale**: 6.0
+- **Sampler**: dpmpp_2m_sde_gpu
 - **Strength**: 0.65
 - **Preprocessor**: MLSD
 
-## Troubleshooting
+## 📄 License
 
-- **"git not found"**: Install Git for Windows from https://git-scm.com/download/win
-- **"PowerShell not found"**: Already included in Windows 10/11
-- **"Access denied"**: Run PowerShell as Administrator
+This project is provided as-is for educational and personal use.
 
-## Next Steps
+## 🤝 Contributing
 
-After installation:
-1. Restart ComfyUI (Ctrl+C then `python main.py`)
-2. Open http://localhost:8188
-3. Load `floorplan_workflow_2025.json`
-4. Upload a floor plan sketch (black lines on white)
-5. Click "Queue Prompt"
+Contributions are welcome! Please open an issue or submit a pull request.
 
-## Need Help?
+## 📧 Support
 
-Check **SETUP_COMPLETE.txt** for detailed instructions.
+For issues or questions, please open an issue on GitHub.
 
 ---
 
-**Files copied from**: `/media/share/Pidev_proj/`
+**Happy Floor Planning!** 🏠
