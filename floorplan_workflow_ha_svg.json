@@ -1,0 +1,109 @@
+{
+  "last_node_id": 15,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "PrimitiveStringMultiline",
+      "pos": [100, 100],
+      "size": [600, 500],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [1],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "FLOOR PLAN LAYOUT\n=================\n\nFRONT ENTRANCE\n┌─────────────────────────────────────────────────────────────────────────────────────┐\n│  Front Porch/Entryway                                                               │\n│  ┌──────────────┐                                                                   │\n│  │  Doorway     │                                                                   │\n│  │  (Front)     │                                                                   │\n│  └──────┬───────┘                                                                   │\n│         │                                                                           │\n│         ▼                                                                           │\n│  ┌─────────────────────────────────────────────────────────────────────────────┐   │\n│  │                        Hallway                                              │   │\n│  │  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐  ┌───────┐                      │   │\n│  │  │Living │  │Kitchen│  │Garage │  │Storage│  │Pool   │                      │   │\n│  │  │Room   │  │      │  │Work-  │  │Closet │  │Area   │                      │   │\n│  │  │(Left) │  │      │  │shop   │  │       │  │       │                      │   │\n│  │  └───────┘  └───────┘  └───────┘  └───────┘  └───────┘                      │   │\n│  └─────────────────────────────────────────────────────────────────────────────┘   │\n│         │                                                                           │\n│         ▼                                                                           │\n│  ┌─────────────────────────────────────────────────────────────────────────────┐   │\n│  │                        Backyard Garden                                      │   │\n│  │  ┌──────────────────────────────────────────────────────────────────────┐   │   │\n│  │  │  Garden beds, Pathway, Seating Area                                  │   │   │\n│  │  └──────────────────────────────────────────────────────────────────────┘   │   │\n│  └─────────────────────────────────────────────────────────────────────────────┘   │\n└─────────────────────────────────────────────────────────────────────────────────────┘\n\nROOM DETAILS\n============\n\n1. FRONT PORCH/ENTRYWAY\n   - Entry door from street\n   - Small entry mat area\n   - Coat closet nearby\n\n2. HALLWAY (Main Spine)\n   - Runs front to back\n   - Left branch: Living Room\n   - Right branch: Kitchen → Garage\n   - Center: Storage closet\n   - Rear: Backyard access\n\n3. LIVING ROOM (Left of hallway)\n   - Large window (front)\n   - Fireplace (left wall)\n   - Open to kitchen\n\n4. KITCHEN (Adjacent to living room)\n   - Wooden door to living room\n   - Window (back yard view)\n   - Peninsula island\n\n5. GARAGE/WORKSHOP (Right of hallway)\n   - Garage door (front)\n   - Workbench area\n   - Storage shelves\n\n6. BACKYARD GARDEN\n   - Covered patio area\n   - Garden beds\n   - Fenced perimeter\n\n7. POOL AREA (Rear right)\n   - In-ground pool\n   - Deck area\n   - Pool equipment closet\n\nWALLS: 20px thick, black lines\nDOORS: Gaps in walls (80-90px wide)\nWINDOWS: Dashed lines (120-150px wide)\nFLOOR: White background\nSTYLE: Clean blueprint, top-down orthographic view"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "QuiverTextToSVGNode",
+      "pos": [100, 650],
+      "size": [400, 300],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "slot_index": 0,
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SVG",
+          "type": "SVG",
+          "links": [2],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QuiverTextToSVGNode"
+      },
+      "widgets_values": [
+        "2D floor plan, top-down orthographic view, architectural blueprint, clean white background, black lines for walls and doors, detailed layout: front porch, hallway, living room left, kitchen adjacent, garage/workshop right, backyard garden, fenced pool area, blueprint style, no shading, minimal details, clean lines, Home Assistant compatible with entity IDs for binary_sensor.living_room, binary_sensor.kitchen, binary_sensor.garage, binary_sensor.pool, binary_sensor.backyard, light.main_lights",
+        "",
+        null,
+        "Quiver SVG v1 Max",
+        12345
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SaveSVGNode",
+      "pos": [600, 650],
+      "size": [300, 100],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "svg",
+          "type": "SVG",
+          "slot_index": 0,
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ui",
+          "type": "DICT",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveSVGNode"
+      },
+      "widgets_values": [
+        "floorplan_homeassistant"
+      ]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [2, 2, 0, 3, 0, "SVG"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5,
+      "offset": [100, 100]
+    }
+  },
+  "version": 0.4
+}
