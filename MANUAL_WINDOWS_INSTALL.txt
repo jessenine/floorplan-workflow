@@ -1,0 +1,174 @@
+# Manual Installation Steps for Windows
+
+## Goal: Install Floor Plan Workflow Components on Windows
+
+ComfyUI is running at: `C:\Users\shade\ComfyUI`
+
+---
+
+## Step 1: Install ComfyUI ControlNet Aux
+
+This provides the MLSD, Lineart, Canny, and other preprocessor nodes.
+
+### Method A: Using Git (Recommended)
+
+1. Open **Git Bash** or **PowerShell** in your ComfyUI folder:
+   ```powershell
+   cd C:\Users\shade\ComfyUI
+   ```
+
+2. Clone the ControlNet Aux repository:
+   ```powershell
+   git clone https://github.com/Fannovel16/ComfyUI-ControlNet-Aux.git custom_nodes\ComfyUI-ControlNet-Aux
+   ```
+
+### Method B: Manual Download
+
+1. Download the ZIP file from: https://github.com/Fannovel16/ComfyUI-ControlNet-Aux
+2. Extract it to: `C:\Users\shade\ComfyUI\custom_nodes\ComfyUI-ControlNet-Aux`
+
+---
+
+## Step 2: Install ComfyUI Manager (Optional but Recommended)
+
+This makes it easier to install nodes and models in the future.
+
+1. In your ComfyUI folder:
+   ```powershell
+   cd C:\Users\shade\ComfyUI
+   ```
+
+2. Clone the Manager repository:
+   ```powershell
+   git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes\ComfyUI-Manager
+   ```
+
+---
+
+## Step 3: Download ControlNet Union Pro Max
+
+This is the main ControlNet model (2.5 GB).
+
+1. Go to: https://huggingface.co/xinsir/controlnet-union-sdxl-1.0
+
+2. Download the file: `checkpoint.pth`
+
+3. Rename it to: `controlnet_union_sdxl_promax.pth`
+
+4. Move it to: `C:\Users\shade\ComfyUI\models\controlnet\`
+
+---
+
+## Step 4: Download LineDrawing03 LoRA (Optional)
+
+1. Go to: https://civitai.com/models/91033/lineart-controlnet
+
+2. Download the LoRA file
+
+3. Move it to: `C:\Users\shade\ComfyUI\models\loras\`
+
+---
+
+## Step 5: Verify Existing Files
+
+Check these files already exist (they should from your previous setup):
+
+- `C:\Users\shade\ComfyUI\models\checkpoints\epicrealism_naturalSinRC1VAE.safetensors`
+- `C:\Users\shade\ComfyUI\models\loras\caiping.safetensors`
+
+If missing, download from CivitAI.
+
+---
+
+## Step 6: Restart ComfyUI
+
+1. Stop ComfyUI (Ctrl+C in the terminal where it's running)
+
+2. Start it again:
+   ```powershell
+   python main.py --listen 0.0.0.0
+   ```
+
+---
+
+## Step 7: Load the Workflow
+
+1. Open http://localhost:8188
+
+2. Click the hamburger menu (☰) → **Load Workflow**
+
+3. Select: `floorplan_workflow_2025.json`
+
+4. The workflow should now have all nodes showing black/green (no red)
+
+---
+
+## Quick PowerShell Script (Run in ComfyUI folder)
+
+If you prefer to use PowerShell, create a file called `install_floorplan_workflow.ps1` with this content:
+
+```powershell
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "ComfyUI Floor Plan Workflow Installer" -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host ""
+
+$ComfyUIPath = "C:\Users\shade\ComfyUI"
+$CustomNodesPath = Join-Path $ComfyUIPath "custom_nodes"
+
+Write-Host "Installing ControlNet Aux..." -ForegroundColor Green
+git clone https://github.com/Fannovel16/ComfyUI-ControlNet-Aux.git (Join-Path $CustomNodesPath "ComfyUI-ControlNet-Aux")
+
+Write-Host "Installing Manager..." -ForegroundColor Green
+git clone https://github.com/ltdrdata/ComfyUI-Manager.git (Join-Path $CustomNodesPath "ComfyUI-Manager")
+
+Write-Host "Please download ControlNet Union Pro Max manually:" -ForegroundColor Yellow
+Write-Host "URL: https://huggingface.co/xinsir/controlnet-union-sdxl-1.0" -ForegroundColor Yellow
+Write-Host "File: checkpoint.pth -> rename to controlnet_union_sdxl_promax.pth" -ForegroundColor Yellow
+Write-Host "Place in: $ComfyUIPath\models\controlnet\" -ForegroundColor Yellow
+
+Write-Host ""
+Write-Host "Installation complete! Restart ComfyUI." -ForegroundColor Green
+```
+
+Then run:
+```powershell
+cd C:\Users\shade\ComfyUI
+.\install_floorplan_workflow.ps1
+```
+
+---
+
+## Verification Checklist
+
+After installation, verify:
+
+- [ ] `C:\Users\shade\ComfyUI\custom_nodes\ComfyUI-ControlNet-Aux` exists
+- [ ] `C:\Users\shade\ComfyUI\custom_nodes\ComfyUI-Manager` exists
+- [ ] `C:\Users\shade\ComfyUI\models\controlnet\controlnet_union_sdxl_promax.pth` exists
+- [ ] `C:\Users\shade\ComfyUI\models\loras\LineDrawing03_CE_ZIMG_AIT4k.safetensors` exists
+- [ ] ComfyUI shows "Manager" in sidebar
+- [ ] Workflow loads without red nodes
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| "git not found" | Install Git: https://git-scm.com/download/win |
+| "Access denied" | Run PowerShell as Administrator |
+| "Download failed" | Use browser to download files manually |
+| "Model not found" | Restart ComfyUI after installing nodes |
+| "Red nodes" | Check custom_nodes folders exist and are complete |
+
+---
+
+## Need the Workflow JSON?
+
+Download: `floorplan_workflow_2025.json` and place in:
+`C:\Users\shade\ComfyUI\` or use the "Load Workflow" button in ComfyUI.
+
+---
+
+That's it! After these steps, you'll be ready to generate floor plans! 🏠
