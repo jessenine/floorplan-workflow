@@ -1,0 +1,83 @@
+# ControlNet Union Pro Max Installation
+
+## Download Link
+
+**Direct Download URL:**
+```
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+```
+
+**Or visit:** https://huggingface.co/xinsir/controlnet-union-sdxl-1.0
+
+## Installation Steps
+
+### Step 1: Download the Model (2.51 GB)
+
+Use your browser or a download manager to download:
+`diffusion_pytorch_model_promax.safetensors`
+
+### Step 2: Rename the File
+
+Rename the downloaded file to:
+```
+controlnet_union_sdxl_promax.pth
+```
+
+### Step 3: Move to Correct Folder
+
+Move the file to:
+```
+C:\Users\shade\ComfyUI\models\controlnet\
+```
+
+**Full path should be:**
+```
+C:\Users\shade\ComfyUI\models\controlnet\controlnet_union_sdxl_promax.pth
+```
+
+### Step 4: Restart ComfyUI
+
+1. Stop ComfyUI (Ctrl+C in the terminal)
+2. Start it again:
+   ```
+   python main.py --listen 0.0.0.0
+   ```
+
+## Verification
+
+After restarting ComfyUI, check:
+- No red nodes in the workflow
+- The ControlNetLoader node can load the model
+- The workflow generates successfully
+
+## Troubleshooting
+
+### File Not Found
+- Make sure the file is in `ComfyUI/models/controlnet/`
+- The filename must be exactly: `controlnet_union_sdxl_promax.pth`
+
+### ComfyUI Not Loading
+- Make sure ComfyUI is restarted after copying the file
+- Check the terminal for any error messages
+
+### Wrong File Format
+- If you downloaded as `.safetensors`, rename to `.pth`
+- The file content is the same, just the extension needs to match
+
+## Alternative Installation Method
+
+If the direct download fails, you can also use git lfs:
+
+```powershell
+cd C:\Users\shade\ComfyUI\models\controlnet
+git clone https://huggingface.co/xinsir/controlnet-union-sdxl-1.0 temp
+# Rename the file from temp/diffusion_pytorch_model_promax.safetensors
+# to controlnet_union_sdxl_promax.pth
+# Then delete the temp folder
+```
+
+## Need Help?
+
+The model is hosted at: https://huggingface.co/xinsir/controlnet-union-sdxl-1.0
+
+This ControlNet++ model supports 10+ control types including MLSD, Lineart, Canny, and more.
