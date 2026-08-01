@@ -11,7 +11,27 @@ This workflow generates **interactive, AI-powered Home Assistant floor plans** w
 3. **AI SVG Generation**: `QuiverTextToSVGNode` converts ASCII to interactive SVG
 4. **HA-Ready Output**: SVG with proper structure for Home Assistant
 
-## The Workflow
+## Quick Start (Fully Automated)
+
+The easiest way is to use the automated script:
+
+```bash
+# Set up environment
+export HA_URL="http://192.168.1.146:8123"
+export HA_TOKEN="your_long_lived_token"
+
+# Run the generator
+python3 generate_floorplan.py
+```
+
+This will:
+1. Connect to HA and fetch camera snapshots
+2. Analyze each view with the local vision model
+3. Generate ASCII floor plan
+4. Submit to ComfyUI to create interactive SVG
+5. Save to `/media/share/Pidev_proj/image_output_hist/`
+
+## Manual Workflow (ComfyUI)
 
 ### Input: Camera Snapshots → ASCII Description
 
@@ -57,43 +77,30 @@ The `SaveSVGNode` saves the SVG to:
 
 ## Quick Start
 
-### Step 1: Configure Your Vision Model Analysis
+### Step 1: Run the Automated Script
 
-Your camera analysis script should output ASCII to a file:
-
-```python
-# camera_analysis.py
-from pathlib import Path
-
-# Your existing camera analysis code...
-ascii_output = """
-FLOOR PLAN LAYOUT
-=================
-
-1. FRONT PORCH/ENTRYWAY
-2. HALLWAY (Main Spine)
-3. LIVING ROOM (Left of hallway)
-4. KITCHEN (Adjacent to living room)
-5. GARAGE/WORKSHOP (Right of hallway)
-6. BACKYARD GARDEN
-7. POOL AREA (Rear right)
-
-WALLS: 20px thick, black lines
-DOORS: Gaps in walls (80-90px wide)
-"""
-
-Path("/tmp/floorplan_ascii.txt").write_text(ascii_output)
+```bash
+cd /media/share/Pidev_proj/floorplan_workflow
+python3 generate_floorplan.py
 ```
 
-### Step 2: Run the Workflow in ComfyUI
+Or use the ComfyUI workflow directly:
 
-1. Open ComfyUI: http://192.168.1.95:8188
-2. Load workflow: `floorplan_workflow_ha_svg.json`
-3. The ASCII text is already embedded in the workflow
-4. Click **"Queue Prompt"**
-5. Wait for AI to generate SVG
+### Step 1: Run the Automated Script
 
-### Step 3: Deploy to Home Assistant
+```bash
+cd /media/share/Pidev_proj/floorplan_workflow
+python3 generate_floorplan.py
+```
+
+This will:
+1. Connect to HA and fetch camera snapshots
+2. Analyze each view with the local vision model
+3. Generate ASCII floor plan
+4. Submit to ComfyUI to create interactive SVG
+5. Save to `/media/share/Pidev_proj/image_output_hist/`
+
+### Step 2: Deploy to Home Assistant
 
 Copy the SVG to HA:
 
