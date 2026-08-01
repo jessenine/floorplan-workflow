@@ -23,13 +23,18 @@ def parse_ascii_floorplan(ascii_text):
     rooms = []
     
     # Look for numbered room definitions
-    room_pattern = re.compile(r'^(\d+)\.\s+([A-Z][a-zA-Z\s]+)', re.MULTILINE)
+    # Pattern: number. Room Name (optional description) - description
+    room_pattern = re.compile(r'^(\d+)\.\s+(.+?)(?:\s*\(.+\))?(?:\s*-|$)', re.MULTILINE)
     for match in room_pattern.finditer(ascii_text):
         room_num = int(match.group(1))
         room_name = match.group(2).strip()
         
+        # Clean up room name - remove parentheticals and slashes
+        room_name = re.sub(r'\s*\([^)]+\)', '', room_name)  # Remove (description)
+        room_name = room_name.replace('/', ' ').strip()
+        
         # Generate entity ID from room name
-        entity_id = f'binary_sensor.{room_name.lower().replace(" ", "_").replace("(", "").replace(")", "")}'
+        entity_id = f'binary_sensor.{room_name.lower().replace(" ", "_")}'
         
         rooms.append({
             'id': entity_id,
